@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+.bank-logo{
+	width: 80px;
+	height: 70px;
+}
+.name{
+	color:#4287f5;
+	font-weight:bold;
+}
+#icons{
+	color:#4287f5;
+	
+	font-weight:bold;
+}
+
+.footer-section{
+	position: relative;
+	width: 100%;
+	bottom:0;
+	color: white;
+	background-color:#4287f5;;
+	margin-top:10px
+	
+	
+	
+}
+
+.footer-content{
+	display:flex;
+	flex-direction:row;
+	justify-content:space-around;
+	padding-top: 20px
+}

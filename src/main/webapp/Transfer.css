@@ -1,0 +1,9 @@
+@charset "ISO-8859-1";
+.background-image{
+	background-image:url("https://image.freepik.com/free-photo/america-dollars-banknotes-money-into-pastel-blue-piggy-bank-on-blue-background_83271-383.jpg");
+	height:80vh;
+	background-size:cover;
+	margin:20px;
+	border-radius: 20px;
+	
+}

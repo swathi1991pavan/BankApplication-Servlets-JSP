@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel ="stylesheet" href="Register.css">
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+     
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+ 
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+  	<img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Eo_circle_blue_letter-h.svg" class="bank-logo"/>
+  	<span class="name"><b> Hyderabad National Bank </b></span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" id="icons" href="AboutUs.html">About Us<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="icons" href="Login.html">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="icons" href="Register.html">SignUp</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="icons" href="Help.html">Help</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+<div class="body-content">
+<div>
+<img src="https://img.freepik.com/free-vector/employees-cv-candidates-resume-corporate-workers-students-id-isolate-flat-design-element-job-applications-avatars-personal-information-concept-illustration_335657-1661.jpg?w=826&t=st=1687862035~exp=1687862635~hmac=a0c6368aef3bf77a40008572d141e44e00a6fb0c560c4539a2cbbd3acba18b84"/>
+</div>
+<div class="signup-form-container">
+
+<form  action="RegisterServlet" class="form" method="post">
+<h1 class ="signup-form-heading">Online User Registration</h1>
+
+
+
+<table class="table-style">
+   <tr>
+    <td>Account No:</td>
+    <td><input type="text" name="accNo" placeholder="Enter here" required></td>
+   </tr>
+   <tr>
+    <td>UserName:</td>
+    <td><input type="text" name="user" placeholder="Enter here" required></td>
+   </tr>
+   <tr>
+   <tr>
+    <td>City:</td>
+    <td><input type="text" name="city" placeholder="Enter here" required></td>
+   </tr>
+   <tr>
+    <td>State:</td>
+    <td><input type="text" name="state" placeholder="Enter here" required></td>
+   </tr>
+   <tr>
+   <tr>
+    <td>Mobile:</td>
+    <td><input type="text" name="mobile" placeholder="Enter here" required></td>
+   </tr>
+   <tr>
+    <td>Password:</td>
+    <td><input type="password" name="password" placeholder="Enter here" required></td>
+   </tr>
+   <tr>
+   <tr>
+    <td>Email:</td>
+    <td><input type="text" name="email" placeholder="Enter here" required></td>
+   </tr>
+   <tr>
+    <td>Country:</td>
+    <td><input type="text" name="country" placeholder="Enter here" required></td>
+   </tr>
+   <tr>
+    <td></td><td><input class="button" type="submit" value="Submit" ></td>
+   </tr>
+   </table>
+</form>
+</div>
+</div>
+<div class="footer-section">
+   <div class="footer-content">
+   	<div>
+   		<ul style="list-style: none;">
+   		    <li><b>EXPLORE</b></li>
+   			<li>Investor Relations</li>
+   			<li>Internet Banking</li>
+   			<li>Mobile Banking</li>
+		</ul>
+   			
+   	</div>
+    <div>
+   		<ul style="list-style: none;">
+   		    <li><b>POPULAR PRODUCTS</b></li>
+   			<li>Savings Accounts</li>
+   			<li>Current Accounts</li>
+   			<li>Credit Cards</li>
+		</ul>
+   			
+   	</div>
+	<div>
+   		<ul style="list-style: none;">
+   		    <li><b>INITIATIVES</b></li>
+   			<li>Debt Service</li>
+   			<li>Blogs</li>
+   			
+		</ul>
+   			
+   	</div>
+	
+	<div>
+   		<ul style="list-style: none;">
+   		    <li><b>RATES AND CHARGES</b></li>
+   			<li>Interest Rates</li>
+   			<li>Service Charges and Fees</li>
+   			
+		</ul>
+   			
+   	</div>
+  
+   </div>
+   </div>
+
+</body>
+</html>

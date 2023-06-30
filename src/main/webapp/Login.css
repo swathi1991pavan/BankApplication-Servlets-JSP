@@ -1,0 +1,60 @@
+@charset "ISO-8859-1";
+.bank-logo{
+	width: 80px;
+	height: 70px;
+}
+
+.container{
+	display:flex;
+	flex-direction:row;
+	justify-content:space-between;
+	
+}
+
+.bg-container{
+	height:750px;
+}
+.login-form-container{
+	width:40%;
+	display:flex;
+	justify-content:flex-start;
+	margin-top:60px;
+	background-color:#bee0ec;
+	border-radius:20px;
+	margin-left:100px;
+}
+
+
+.login-form-heading{
+	color:#4287f5;
+	font-family:"Roboto";
+	margin-left:20px;
+}
+
+.sub-heading{
+	padding: 25px;
+	margin-top:10px;
+	text-align:left;
+	color:#1e81b0;
+}
+.form{
+	text-align: left;
+	padding-top:20px;
+	background-color: light-blue;
+	border-radius: 20px;
+}
+.table-style{
+	margin-left:20px;
+}
+
+.button{
+	text-align:center;
+	color:#1e81b0;
+	background-color:white;
+	border-radius:8px;
+	width: 120px;
+	height:40px;
+	border-color:white;
+	margin-top:15px;
+}
+

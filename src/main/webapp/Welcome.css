@@ -1,0 +1,41 @@
+@charset "ISO-8859-1";
+.bank-logo{
+	width: 80px;
+	height: 70px;
+}
+
+.card-container{
+	display:flex;
+	flex-direction: row;
+	background-color:#bee0ec;
+	border-radius: 20px;
+	margin: 30px;
+}
+
+.card-content{
+	margin: 20px;
+	padding:20px;
+}
+
+.heading{
+	color:#1e81b0;
+	font-family:"Roboto";
+	font-style:bold;
+}
+
+.button{
+	color:#1e81b0;
+	background-color:white;
+	border-radius:8px;
+	width: 120px;
+	height:50px;
+	border-color:white;
+}
+
+.welcome-heading{
+	text-align:center;
+	color: #1e81b0;
+	font-family:"Roboto";
+	margin-top: 20px;
+	
+}

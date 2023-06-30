@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+.bank-logo{
+	width: 80px;
+	height: 70px;
+}
+.container{
+	display:flex;
+	flex-direction: row;
+	justify-content:flex-start;
+	margin:auto;
+	height:750px;
+	
+}
+
+.heading{
+	color:#4287f5;
+	font-family:"Roboto";
+	margin-bottom:10px;
+}
+.contact-us-data{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:flex-start;
+}

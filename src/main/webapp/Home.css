@@ -1,0 +1,23 @@
+@charset "ISO-8859-1";
+.bank-logo{
+	width: 80px;
+	height: 70px;
+}
+
+.carousel-height{
+	height:300px
+}
+
+.image{
+	
+	height:800px
+}
+
+.name{
+	color:#4287f5;
+}
+#icons{
+	color:#4287f5;
+	
+	font-weight:bold;
+}

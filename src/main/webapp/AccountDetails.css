@@ -1,0 +1,24 @@
+@charset "ISO-8859-1";
+
+.table-style{
+	
+	text-align:center;
+	margin:auto;
+	
+	margin-top: 30px;
+} 
+
+.button{
+	text-align:center;
+	color:#1e81b0;
+	background-color:white;
+	border-radius:8px;
+	width: 120px;
+	height:40px;
+	border-color:white;
+	margin-top:15px;
+}
+
+.bg-color{
+	height: 750px;
+}

@@ -1,0 +1,16 @@
+@charset "ISO-8859-1";
+.button{
+	text-align:center;
+	color:#1e81b0;
+	background-color:white;
+	border-radius:8px;
+	width: 120px;
+	height:40px;
+	border-color:white;
+	margin-top:15px;
+}
+
+.content{
+	text-align:center;
+	margin-top:30px;
+}
