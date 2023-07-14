@@ -27,6 +27,10 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */  
    	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+ 	   response.setHeader("Pragma", "no-cache");
+ 	   response.setDateHeader("Expires", 0);
+ 	   response.setHeader("Pragma","no-cache");
    		Layout layout = new SimpleLayout();
 		Appender app = new ConsoleAppender(layout);
 		log.addAppender(app);

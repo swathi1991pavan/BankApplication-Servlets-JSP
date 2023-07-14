@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,9 +114,150 @@ public class CustomerDao {
 	        	ex.printStackTrace();}  
 	          
 	        return userName;  
-	    }  
-    
+	    }
+	 
+	 
 	 public static int withdraw(int accNo,int amount) {
+    	 int status=0; 
+    	 Connection con= null;
+	        try{ 
+	        	log.info("loginSave method calling connection");
+	             con=CustomerDao.getConnection();
+	            con.setAutoCommit(false);  
+	            log.info("Retrieving data");
+	            PreparedStatement ps=con.prepareStatement(  
+	            		"select * from account where AccountNo=?");
+	            ps.setInt(1, accNo);
+	            
+	            ResultSet rs = ps.executeQuery();
+	            
+	            
+	            while(rs.next()){
+	            	log.info("query executed fetching the data");
+	            	float currentAmount= rs.getInt(2);
+		            if(currentAmount>amount) {
+		            	log.info("entered if");
+		            	float updateAmount= currentAmount-amount;
+		            	log.info("Updating data");
+		            	PreparedStatement pstat=con.prepareStatement(  
+		            		"update account set Balance=? where AccountNo=?");
+		            	pstat.setFloat(1, updateAmount);
+		            	pstat.setInt(2,accNo);
+		            	status=pstat.executeUpdate();
+		            	log.info("query executed with status" + status); 
+		            	
+		            	log.info("inserting data into transcation table");
+		            	PreparedStatement psTrans =con.prepareStatement(  
+			            		"insert into transcation(AccountNo,TranscationType,TransactionStatus,Amount,FinalBalance) values (?,?,?,?,?)");
+			            psTrans.setInt(1,accNo);
+			            psTrans.setString(2,"Withdraw");
+			            if(status>0) {
+			            	psTrans.setString(3,"SUCCESS");
+			            }
+			            else {
+			            	psTrans.setString(3,"FAILURE");
+			            }
+			            
+			            psTrans.setInt(4,amount);
+			            psTrans.setFloat(5,updateAmount);
+			            System.out.println(updateAmount);
+			            psTrans.executeUpdate();
+			            log.info("query executed success");
+			            
+		            }	
+	            }
+	            
+	            con.commit();
+	       
+	        }catch(Exception ex) {
+	        	try {
+					con.rollback();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+	        }
+	        finally {
+	        	try {
+	        		if (con != null) {
+	        			con.close();
+	        		}
+	        	}catch(SQLException ignored) { }
+	        }
+	        return status;
+     }
+	 
+	 
+	 public static int deposit(int accNo,int amount) {
+    	 int status=0;
+       	 float updateAmount = 0;
+       	Connection con= null;
+	        try{ 
+	        	log.info("deposit method calling connection");
+	            con=CustomerDao.getConnection();
+	            con.setAutoCommit(false); 
+	            log.info("Retrieving data");
+	            PreparedStatement ps=con.prepareStatement(  
+	            		"select * from account where AccountNo=?");
+	            ps.setInt(1, accNo);
+	            ResultSet rs = ps.executeQuery();
+	            
+	            
+	            while(rs.next()){
+	            	log.info("data fetched success");
+	            	float currentAmount= rs.getInt(2);
+		            updateAmount= currentAmount+amount;
+		            		            
+		            log.info("updating data");
+	            	PreparedStatement pstat=con.prepareStatement(  
+		            		"update account set Balance=? where AccountNo=?");
+	            	pstat.setFloat(1, updateAmount);
+	            	pstat.setInt(2,accNo);
+	    	        status=pstat.executeUpdate();
+	    	        log.info("query executed with status" + status);
+	            	
+	    	        log.info("inserting data");
+	            	PreparedStatement psTrans =con.prepareStatement(  
+		            		"insert into transcation(AccountNo,TranscationType,TransactionStatus,Amount,FinalBalance) values (?,?,?,?,?)");
+		            psTrans.setInt(1,accNo);
+		            psTrans.setString(2,"Deposit");
+		            if(status>0) {
+		            	psTrans.setString(3,"SUCCESS");
+		            }
+		            else {
+		            	psTrans.setString(3,"FAILURE");
+		            }
+		            
+		            psTrans.setInt(4,amount);
+		            psTrans.setFloat(5,updateAmount);
+		            
+		            psTrans.executeUpdate();
+		            log.info("query executed with status" + psTrans);
+		            
+	            }
+	            
+	            	           
+	            con.commit();
+	            
+	        }catch(Exception ex) {
+	        	try {
+					con.rollback();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+	        }
+	        finally {
+	        	try {
+	        		if (con != null) {
+	        			con.close();
+	        		}
+	        	}catch(SQLException ignored) { }
+	        }
+	        return status;
+     }
+    
+	/* public static int withdraw(int accNo,int amount) {
     	 int status=0;  
 	        try{ 
 	        	log.info("loginSave method calling connection");
@@ -169,8 +310,10 @@ public class CustomerDao {
 	        
 	        return status;
 	                
-     }
-     public static int deposit(int accNo,int amount) {
+     }*/
+	 
+	 
+    /* public static int deposit(int accNo,int amount) {
     	 int status=0;
        	 float updateAmount = 0;
 	        try{ 
@@ -226,13 +369,15 @@ public class CustomerDao {
 	        
 	        return status;
 	                
-     }
+     }*/
 	  
      public static int transfer(int fromAccNo,int toAccNo, int amount) {
-    	 int status=0;  
+    	 int status=0;
+    	 Connection con= null;
 	        try{
 	        	log.info("transfer method calling connection");
-	            Connection con=CustomerDao.getConnection();
+	             con=CustomerDao.getConnection();
+	             con.setAutoCommit(false); 
 	            log.info("Fetching data");
 	            PreparedStatement ps=con.prepareStatement(  
 	            		"select * from account where AccountNo=?");
@@ -292,20 +437,35 @@ public class CustomerDao {
 		        		            
 		        		            psTrans.executeUpdate();
 		        		            log.info("Query success");
+		        		            System.out.println("success");
 		            			}
 		            		}	
 			            }
 	            	}
 		            	
 	            }
-	            con.close();
-	        }catch(Exception ex){
-	        	log.error("error");
-	        	ex.printStackTrace();}
-	        
+	            con.commit();
+	        }catch(Exception ex) {
+	        	try {
+					con.rollback();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+	        }
+	        finally {
+	        	try {
+	        		if (con != null) {
+	        			con.close();
+	        		}
+	        	}catch(SQLException ignored) { }
+	        }
 	        return status;
-	                
      }
+	            
+	        
+	                
+     
      
      public static Customer getCustById(int accNo ){  
          Customer c=new Customer();  

@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%
+response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
+response.setHeader("Pragma","no-cache"); //HTTP 1.0 backward compatibility
+HttpSession httpSession = request.getSession(false);
+int userid= (Integer) httpSession.getAttribute("userid");
+out.println(userid);
+if(userid == 0){
+	  RequestDispatcher dispatcher = request.getRequestDispatcher("Home.html");
+	  dispatcher.forward(request, response);
+}
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +56,7 @@
         <a class="nav-link" id="icons" href="./ViewTranscationServlet">View Transcation</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="icons" href="./LogoutServlet">Logout</a>
+        <a class="nav-link" id="icons" href="">Logout</a>
       </li>
       
     </ul>

@@ -31,6 +31,10 @@ public class AccountDetails extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		   response.setHeader("Pragma", "no-cache");
+		   response.setDateHeader("Expires", 0);
+		   response.setHeader("Pragma","no-cache");
 		Layout layout = new SimpleLayout();
 		Appender app = new ConsoleAppender(layout);
 		log.addAppender(app);
@@ -61,7 +65,7 @@ public class AccountDetails extends HttpServlet {
         httpSession.setAttribute("Country", c.getCountry());
         log.info("Values assigned Successfully");
         
-        log.info("Passig control to AccountDetails.jsp");
+        log.info("Passing control to AccountDetails.jsp");
         RequestDispatcher dispatcher = request.getRequestDispatcher("AccountDetails.jsp");
         dispatcher.forward(request, response);
             

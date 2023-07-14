@@ -21,11 +21,16 @@ import org.apache.log4j.Logger;
 public class DepositServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static Logger log = Logger.getLogger(DepositServlet.class);
+    
 	
     /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	   response.setHeader("Pragma", "no-cache");
+	   response.setDateHeader("Expires", 0);
+	   response.setHeader("Pragma","no-cache");
 		log.info("started doPost method");
 		PrintWriter out =response.getWriter();
 		response.setContentType("text/html");

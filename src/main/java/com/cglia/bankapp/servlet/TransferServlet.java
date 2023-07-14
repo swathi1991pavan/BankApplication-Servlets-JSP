@@ -23,6 +23,10 @@ public class TransferServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		   response.setHeader("Pragma", "no-cache");
+		   response.setDateHeader("Expires", 0);
+		   response.setHeader("Pragma","no-cache");
 		log.info("started doPost method");
 		PrintWriter out =response.getWriter();
 		response.setContentType("text/html");

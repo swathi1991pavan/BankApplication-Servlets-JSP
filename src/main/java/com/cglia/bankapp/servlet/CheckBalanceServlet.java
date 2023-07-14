@@ -21,12 +21,16 @@ import org.apache.log4j.SimpleLayout;
 @WebServlet("/CheckBalanceServlet")
 public class CheckBalanceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static Logger log = Logger.getLogger(LogoutServlet.class);   
+	private static Logger log = Logger.getLogger(CheckBalanceServlet.class);   
     
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		   response.setHeader("Pragma", "no-cache");
+		   response.setDateHeader("Expires", 0);
+		   response.setHeader("Pragma","no-cache");
 		Layout layout = new SimpleLayout();
 		Appender app = new ConsoleAppender(layout);
 		log.addAppender(app);
@@ -42,7 +46,7 @@ public class CheckBalanceServlet extends HttpServlet {
     		log.info("Getting the userid from session");
     		userid=(int)httpSession.getAttribute("userid");
     		
-       	}
+       
     	
     	 log.info("Calling checkBalance method");
     	 float balance = CustomerDao.checkBalance(userid);
@@ -54,6 +58,10 @@ public class CheckBalanceServlet extends HttpServlet {
     	 log.info("Passing control to CheckBalance.jsp");
     	 RequestDispatcher dispatcher = request.getRequestDispatcher("CheckBalance.jsp");
          dispatcher.forward(request, response);
+    	}else {
+    		RequestDispatcher dispatcher = request.getRequestDispatcher("Login.html");
+            dispatcher.forward(request, response);
+    	}
     	 
 	}
 

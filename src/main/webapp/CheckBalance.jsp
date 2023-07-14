@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%
+response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
+response.setHeader("Pragma","no-cache"); //HTTP 1.0 backward compatibility
+HttpSession httpSession = request.getSession(false);
+int userid= (Integer) httpSession.getAttribute("userid");
+
+if(userid == 0){
+	  RequestDispatcher dispatcher = request.getRequestDispatcher("Home.html");
+	  dispatcher.forward(request, response);
+}
+%>      
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +24,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 <meta charset="ISO-8859-1">
+<script> 
+ 
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+ 
+</script> 
 <title>Insert title here</title>
 </head>
 <body>
@@ -43,14 +63,26 @@
         <a class="nav-link" id="icons" href="./ViewTranscationServlet">View Transcation</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="icons" href="./LogoutServlet">Logout</a>
+        <a class="nav-link" id="icons" href="">Logout</a>
       </li>
       
     </ul>
   </div>
 </nav>
 <div class="background-image">
+<%
+response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
+response.setHeader("Pragma","no-cache"); //HTTP 1.0 backward compatibility
+//HttpSession httpSession = request.getSession(false);
+userid= (Integer) httpSession.getAttribute("userid");
 
+if(userid == 0){
+	  RequestDispatcher dispatcher = request.getRequestDispatcher("Home.html");
+	  dispatcher.forward(request, response);
+}
+%>      
 
 <h1 class="heading" ><center>Your balance amount is ${AccBalance}</center></h1>
 
